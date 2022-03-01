@@ -1,6 +1,6 @@
 <h1 align="center">
     <img alt="42Lausanne" title="42Lausanne" src="https://github.com/MarJC5/42/blob/main/42_logo.svg" width="140"> </br>
-    Project n°7 - push_swap
+    Project n°9 - Philosophers
     <h4 align="center" style="width: 50%; margin: 2rem auto; font-weight: normal;">
      basics of threading a process, see how to create threads and discover mutexes.
     </h4>
