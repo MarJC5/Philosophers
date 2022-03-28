@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 13:04:34 by jmartin           #+#    #+#             */
-/*   Updated: 2022/03/28 15:06:37 by jmartin          ###   ########.fr       */
+/*   Updated: 2022/03/28 15:19:03 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	init_fork(t_status *status)
 {
-	int		i;
+	int	i;
 
 	i = -1;
 	while (++i < status->num_of_philo)
