@@ -43,3 +43,19 @@ During that time, they will need to hold two forks.
 philosophers have eaten at least number_of_times_each_philosopher_must_eat
 times, the simulation stops. If not specified, the simulation stops when a
 philosopher dies.
+
+## Test
+
+Here is the test values:
+
+```shell
+1 800 200 200 (die)
+5 800 200 200 (no die)
+5 800 200 200 10 (stop after each philo eat 10 times)
+4 410 200 200 (no die)
+4 310 200 200 (die)
+```
+
+## External functs
+
+memset, printf, malloc, free, write, usleep, gettimeofday, pthread_create, pthread_detach, pthread_join, pthread_mutex_init, pthread_mutex_destroy, pthread_mutex_lock, pthread_mutex_unlock

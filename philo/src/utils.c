@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 10:55:45 by jmartin           #+#    #+#             */
-/*   Updated: 2022/03/28 13:10:45 by jmartin          ###   ########.fr       */
+/*   Updated: 2022/03/28 13:15:51 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,5 @@ void	clean_stuff(t_status *status)
 	while (status->number_of_philo)
 		free(status->philo[status->number_of_philo--]);
 	free(status->philo);
+	free(status);
 }
