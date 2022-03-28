@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 15:25:58 by jmartin           #+#    #+#             */
-/*   Updated: 2022/03/28 13:15:47 by jmartin          ###   ########.fr       */
+/*   Updated: 2022/03/28 15:01:50 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int	main(int argc, char **argv)
 		status = malloc(sizeof(t_status));
 		if (!status)
 			return (0);
-		status->time_start = current_timestamp();
 		init_status(status, argv);
+		status->time_start = current_timestamp();
 		clean_stuff(status);
 	}
 	return (0);
