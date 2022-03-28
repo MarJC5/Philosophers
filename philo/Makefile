@@ -7,7 +7,7 @@ RESET	= \033[0m
 
 SRCS_DIR	= ./src/
 SRCS_FILES	=  main.c
-SRCS_FILES	+= 
+SRCS_FILES	+= mini_libft.c utils.c routine.c init.c
 
 SRCS		:= ${patsubst %, ${SRCS_DIR}%, ${SRCS_FILES}}
 
