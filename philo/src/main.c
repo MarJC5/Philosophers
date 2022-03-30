@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 15:25:58 by jmartin           #+#    #+#             */
-/*   Updated: 2022/03/28 15:01:50 by jmartin          ###   ########.fr       */
+/*   Updated: 2022/03/30 08:03:49 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	main(int argc, char **argv)
 {
+	pthread_t	*thread_id;
 	t_status	*status;
 
 	if (argc < 5)
@@ -24,8 +25,9 @@ int	main(int argc, char **argv)
 		status = malloc(sizeof(t_status));
 		if (!status)
 			return (0);
+		thread_id = NULL;
 		init_status(status, argv);
-		status->time_start = current_timestamp();
+		init_philo_thread(status, thread_id);
 		clean_stuff(status);
 	}
 	return (0);

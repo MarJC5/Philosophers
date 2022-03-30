@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 15:24:05 by jmartin           #+#    #+#             */
-/*   Updated: 2022/03/28 15:09:00 by jmartin          ###   ########.fr       */
+/*   Updated: 2022/03/30 08:07:11 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_philo
 	long			last_meal;
 	struct s_philo	*l_fork;
 	struct s_philo	*r_fork;
+	struct s_status	*status;
 }	t_philo;
 
 typedef struct s_status
@@ -67,11 +68,17 @@ void	print_event(char *str, int philo_num, long timestamp);
  */
 
 void	init_status(t_status *status, char **args);
+void	init_philo_thread(t_status *status, pthread_t *thread_id);
 
 /**
  * CLEAN STUFF
  */
 
 void	clean_stuff(t_status *status);
+
+/**
+ * Routine
+ */
+
 
 #endif
