@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 13:04:34 by jmartin           #+#    #+#             */
-/*   Updated: 2022/03/31 21:21:52 by jmartin          ###   ########.fr       */
+/*   Updated: 2022/03/31 21:29:36 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ static void	init_fork(t_status *status)
 			status->philo[i]->l_fork = status->philo[i - 1];
 		pthread_mutex_init(&status->philo[i]->fork, NULL);
 	}
-	pthread_mutex_init(&status->print, NULL);
 }
 
 static void	init_philo(t_status *status)
