@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 15:24:05 by jmartin           #+#    #+#             */
-/*   Updated: 2022/03/31 07:43:40 by jmartin          ###   ########.fr       */
+/*   Updated: 2022/03/31 17:19:30 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ typedef struct s_philo
 {
 	int				position;
 	int				eat_count;
-	int				is_eating;
+	int				is_dead;
+	int				is_full;
 	long			last_meal;
+	pthread_mutex_t	fork;
 	struct s_philo	*l_fork;
 	struct s_philo	*r_fork;
 	struct s_status	*status;
@@ -36,13 +38,15 @@ typedef struct s_philo
 
 typedef struct s_status
 {
-	int		time_to_die;
-	int		time_to_eat;
-	int		time_to_sleep;
-	int		num_of_philo;
-	int		num_of_times_to_eat;
-	long	time_start;
-	t_philo	**philo;
+	int				time_to_die;
+	int				time_to_eat;
+	int				time_to_sleep;
+	int				num_of_philo;
+	int				num_of_times_to_eat;
+	long			time_start;
+	pthread_t		*thread_id;
+	pthread_mutex_t	print;
+	t_philo			**philo;
 }	t_status;
 
 /**
@@ -57,6 +61,7 @@ int		ft_atoi(const char *str);
 
 long	current_timestamp(void);
 long	now(t_philo *philo);
+void	oh_wait(t_philo *philo, int time_ref);
 
 /**
  * MESSAGE
@@ -69,7 +74,7 @@ void	print_event(char *str, int philo_num, long timestamp);
  */
 
 void	init_status(t_status *status, char **args);
-void	init_philo_thread(t_status *status, pthread_t *thread_id);
+void	init_philo_thread(t_status *status);
 
 /**
  * CLEAN STUFF
@@ -81,10 +86,11 @@ void	clean_stuff(t_status *status);
  * Routine
  */
 
-void	routine_fork(t_philo *philo);
+int		am_i_full(t_philo *philo);
+int		am_i_starved(t_philo *philo);
+void	is_your_fork_free(t_philo *philo);
 void	routine_eat(t_philo *philo);
+int		routine_fork(t_philo *philo);
 void	routine_sleep(t_philo *philo);
-void	routine_think(t_philo *philo);
-void	routine_dead(t_philo *philo);
 
 #endif

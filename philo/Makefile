@@ -7,7 +7,7 @@ RESET	= \033[0m
 
 SRCS_DIR	= ./src/
 SRCS_FILES	=  main.c
-SRCS_FILES	+= mini_libft.c utils.c routine.c init.c
+SRCS_FILES	+= mini_libft.c utils.c check.c routine.c init.c
 
 SRCS		:= ${patsubst %, ${SRCS_DIR}%, ${SRCS_FILES}}
 
@@ -19,8 +19,7 @@ OBJS_FILES	:= ${SRCS_FILES:.c=.o}
 OBJS		:= ${patsubst %, ${O_DIR}%, ${OBJS_FILES}}
 DEBUGS		:= ${patsubst %, ${D_DIR}%, ${OBJS_FILES}}
 
-VALGRIND	= valgrind  --main-stacksize=167104768 --leak-check=full --show-leak-kinds=all --track-origins=yes --suppressions=memcheckignore --gen-suppressions=yes
-VALGRIND	= valgrind  --suppressions=memcheckignore --gen-suppressions=yes
+VALGRIND	= valgrind  --main-stacksize=167104768 --leak-check=full --show-leak-kinds=all --track-origins=yes
 
 
 NAME		= philo
@@ -53,7 +52,7 @@ ${O_DIR}%.o: ${SRCS_DIR}%.c
 valgrind: ${D_DIR} ${DEBUGS}
 	${RM} ${NAME}
 	${CC} ${CFLAGS} -o ${NAME} ${DEBUGS} ${LIBS} -ggdb
-	${VALGRIND} ./${NAME}
+	${VALGRIND} ./${NAME} 5 800 200 200
 
 
 #Compile a debug executable with -g and fsanitize
