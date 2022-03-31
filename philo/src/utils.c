@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 10:55:45 by jmartin           #+#    #+#             */
-/*   Updated: 2022/03/30 07:39:01 by jmartin          ###   ########.fr       */
+/*   Updated: 2022/03/31 07:43:07 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ long	current_timestamp(void)
 	gettimeofday(&tv, NULL);
 	milliseconds = (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
 	return (milliseconds);
+}
+
+long	now(t_philo *philo)
+{
+	return (current_timestamp() - philo->status->time_start);
 }
 
 void	print_event(char *str, int philo_num, long timestamp)

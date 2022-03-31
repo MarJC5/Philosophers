@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 15:24:05 by jmartin           #+#    #+#             */
-/*   Updated: 2022/03/30 08:07:11 by jmartin          ###   ########.fr       */
+/*   Updated: 2022/03/31 07:43:40 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int		ft_atoi(const char *str);
  */
 
 long	current_timestamp(void);
+long	now(t_philo *philo);
 
 /**
  * MESSAGE
@@ -80,5 +81,10 @@ void	clean_stuff(t_status *status);
  * Routine
  */
 
+void	routine_fork(t_philo *philo);
+void	routine_eat(t_philo *philo);
+void	routine_sleep(t_philo *philo);
+void	routine_think(t_philo *philo);
+void	routine_dead(t_philo *philo);
 
 #endif
