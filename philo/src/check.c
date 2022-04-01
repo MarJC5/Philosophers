@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 14:38:53 by jmartin           #+#    #+#             */
-/*   Updated: 2022/03/31 21:27:33 by jmartin          ###   ########.fr       */
+/*   Updated: 2022/04/01 08:24:45 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	am_i_full(t_philo *philo)
 
 void	is_your_fork_free(t_philo *philo)
 {
-	if (!am_i_starved(philo->l_fork))
+	if (!am_i_starved(philo->l_fork) && !am_i_starved(philo))
 	{
 		pthread_mutex_lock(&philo->l_fork->fork);
 		print_event("has taken a \033[1;37mfork\033[0m",

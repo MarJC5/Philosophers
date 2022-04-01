@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 12:50:30 by jmartin           #+#    #+#             */
-/*   Updated: 2022/03/31 21:23:01 by jmartin          ###   ########.fr       */
+/*   Updated: 2022/04/01 08:43:03 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ void	routine_sleep(t_philo *philo)
 {
 	if (!am_i_starved(philo) && philo->is_dead != 1)
 	{
+		am_i_full(philo);
 		print_event("is \033[1;36msleeping\033[0m",
 			philo->position, now(philo));
 		oh_wait(philo, philo->status->time_to_sleep);
-		am_i_full(philo);
 	}
 }
 
