@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 15:24:05 by jmartin           #+#    #+#             */
-/*   Updated: 2022/04/04 17:41:08 by jmartin          ###   ########.fr       */
+/*   Updated: 2022/04/04 19:27:55 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int		ft_atoi(const char *str);
 
 long	current_timestamp(void);
 long	now(t_philo *philo);
-void	oh_wait(t_philo *philo, int time_ref);
+void	oh_aspetta_calmati(t_philo *philo, int time_ref);
 
 /**
  * MESSAGE
@@ -77,18 +77,18 @@ void	print_event(t_philo *philo, char *str, int philo_num, long timestamp);
 void	init_status(t_status *status, char **args);
 
 /**
- * CLEAN STUFF
+ * CLEAN
  */
 
 void	clean_stuff(t_status *status);
 
 /**
- * Routine
+ * ROUTINE
  */
 
 int		am_i_full(t_philo *philo);
 int		am_i_starved(t_philo *philo);
-void	routine_eat(t_philo *philo);
-void	routine_sleep(t_philo *philo);
+void	*routine(void *arg);
+void	mangia_bene(t_philo *philo);
 
 #endif

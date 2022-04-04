@@ -6,30 +6,11 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 13:04:34 by jmartin           #+#    #+#             */
-/*   Updated: 2022/04/04 17:41:02 by jmartin          ###   ########.fr       */
+/*   Updated: 2022/04/04 19:25:03 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
-
-static void	*routine(void *arg)
-{
-	t_philo	*philo;
-
-	philo = (t_philo *)arg;
-	if (philo->position % 2 == 0)
-		usleep(1000);
-	while (philo->status->state < 1)
-	{
-		if (philo->status->all_eaten == philo->status->num_of_philo)
-			break ;
-		routine_eat(philo);
-		routine_sleep(philo);
-		am_i_starved(philo);
-		am_i_full(philo);
-	}
-	return (NULL);
-}
 
 static void	init_fork(t_status *status)
 {

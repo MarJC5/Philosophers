@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 10:55:45 by jmartin           #+#    #+#             */
-/*   Updated: 2022/04/04 14:37:25 by jmartin          ###   ########.fr       */
+/*   Updated: 2022/04/04 19:12:16 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ long	now(t_philo *philo)
 	return (current_timestamp() - philo->status->time_start);
 }
 
-void	oh_wait(t_philo *philo, int time_ref)
+void	oh_aspetta_calmati(t_philo *philo, int time_ref)
 {
 	long	ms;
 
