@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 15:24:05 by jmartin           #+#    #+#             */
-/*   Updated: 2022/04/03 21:00:20 by jmartin          ###   ########.fr       */
+/*   Updated: 2022/04/04 10:30:51 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ typedef struct s_status
 	int				time_to_sleep;
 	int				num_of_philo;
 	int				num_of_times_to_eat;
+	int				state;
+	int				all_eaten;
 	long			time_start;
 	pthread_mutex_t	print;
 	pthread_t		*thread_id;
@@ -67,7 +69,7 @@ void	oh_wait(t_philo *philo, int time_ref);
  * MESSAGE
  */
 
-void	print_event(char *str, int philo_num, long timestamp);
+void	print_event(t_philo *philo, char *str, int philo_num, long timestamp);
 
 /**
  * INIT

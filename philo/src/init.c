@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 13:04:34 by jmartin           #+#    #+#             */
-/*   Updated: 2022/04/04 07:12:16 by jmartin          ###   ########.fr       */
+/*   Updated: 2022/04/04 11:41:46 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ static void	*routine(void *arg)
 	philo = (t_philo *)arg;
 	if (philo->position % 2 == 0)
 		usleep(1000);
-	while (philo->is_dead != 1 && !philo->is_full)
+	while (philo->status->state < 1 && !philo->is_dead)
 	{
+		if (philo->status->all_eaten == philo->status->num_of_philo)
+			break ;
 		routine_eat(philo);
 		routine_sleep(philo);
 	}
@@ -90,6 +92,8 @@ void	init_philo_thread(t_status *status)
 	int	i;
 
 	i = -1;
+	status->state = 0;
+	status->all_eaten = 0;
 	status->thread_id = (pthread_t *)
 		malloc(status->num_of_philo * sizeof(pthread_t));
 	status->time_start = current_timestamp();

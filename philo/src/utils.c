@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 10:55:45 by jmartin           #+#    #+#             */
-/*   Updated: 2022/04/03 21:30:12 by jmartin          ###   ########.fr       */
+/*   Updated: 2022/04/04 11:52:06 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,10 @@ void	oh_wait(t_philo *philo, int time_ref)
 	}
 }
 
-void	print_event(char *str, int philo_num, long timestamp)
+void	print_event(t_philo *philo, char *str, int philo_num, long timestamp)
 {
-	printf("%ld \033[1;37m%d\033[0m %s\n", timestamp, philo_num, str);
+	if (philo->status->state < 1)
+		printf("%10ld ms \033[1;37m%3d\033[0m %s\n", timestamp, philo_num, str);
 }
 
 void	clean_stuff(t_status *status)
