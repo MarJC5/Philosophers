@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 15:24:05 by jmartin           #+#    #+#             */
-/*   Updated: 2022/04/04 10:30:51 by jmartin          ###   ########.fr       */
+/*   Updated: 2022/04/04 15:06:03 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	print_event(t_philo *philo, char *str, int philo_num, long timestamp);
  * INIT
  */
 
+int		is_args_valid(t_status *status);
 void	init_status(t_status *status, char **args);
 void	init_philo_thread(t_status *status);
 
@@ -90,9 +91,8 @@ void	clean_stuff(t_status *status);
 
 int		am_i_full(t_philo *philo);
 int		am_i_starved(t_philo *philo);
-void	is_your_fork_free(t_philo *philo);
-void	routine_eat(t_philo *philo);
 int		routine_fork(t_philo *philo);
+void	routine_eat(t_philo *philo);
 void	routine_sleep(t_philo *philo);
 
 #endif

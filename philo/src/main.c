@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 15:25:58 by jmartin           #+#    #+#             */
-/*   Updated: 2022/03/31 11:28:51 by jmartin          ###   ########.fr       */
+/*   Updated: 2022/04/04 15:17:14 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ int	main(int argc, char **argv)
 			return (0);
 		status->thread_id = NULL;
 		init_status(status, argv);
-		init_philo_thread(status);
-		clean_stuff(status);
 	}
 	return (0);
 }

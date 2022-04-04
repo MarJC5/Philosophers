@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 13:04:34 by jmartin           #+#    #+#             */
-/*   Updated: 2022/04/04 11:41:46 by jmartin          ###   ########.fr       */
+/*   Updated: 2022/04/04 15:40:44 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@ static void	*routine(void *arg)
 	philo = (t_philo *)arg;
 	if (philo->position % 2 == 0)
 		usleep(1000);
-	while (philo->status->state < 1 && !philo->is_dead)
+	while (philo->status->state < 1)
 	{
 		if (philo->status->all_eaten == philo->status->num_of_philo)
 			break ;
 		routine_eat(philo);
 		routine_sleep(philo);
+		am_i_starved(philo);
+		am_i_full(philo);
 	}
 	return (NULL);
 }
@@ -77,14 +79,23 @@ void	init_status(t_status *status, char **args)
 	status->time_to_die = ft_atoi(args[2]);
 	status->time_to_eat = ft_atoi(args[3]);
 	status->time_to_sleep = ft_atoi(args[4]);
-	if (args[5] != NULL)
-		status->num_of_times_to_eat = ft_atoi(args[5]);
+	if (is_args_valid(status))
+	{
+		if (args[5] != NULL)
+		{
+			status->num_of_times_to_eat = ft_atoi(args[5]);
+			if (status->num_of_times_to_eat <= 0)
+				return ;
+		}
+		status->philo = malloc(status->num_of_philo * sizeof(t_philo));
+		if (!status->philo)
+			return ;
+		init_philo(status);
+		init_philo_thread(status);
+		clean_stuff(status);
+	}
 	else
-		status->num_of_times_to_eat = -1;
-	status->philo = malloc(status->num_of_philo * sizeof(t_philo));
-	if (!status->philo)
-		return ;
-	init_philo(status);
+		printf("Error invalid arguments values");
 }
 
 void	init_philo_thread(t_status *status)
@@ -107,8 +118,11 @@ void	init_philo_thread(t_status *status)
 			return ;
 		}
 	}
-	i = -1;
-	while (++i < status->num_of_philo)
-		pthread_join(status->thread_id[i], NULL);
-	free(status->thread_id);
+	if (status->thread_id)
+	{
+		i = -1;
+		while (++i < status->num_of_philo)
+			pthread_join(status->thread_id[i], NULL);
+		free(status->thread_id);
+	}
 }

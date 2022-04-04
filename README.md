@@ -6,6 +6,10 @@
     </h4>
 </h1>
 
+<p align="center">
+    <img src="./doc/img/screen.png" alt="Philo screenshot"/>
+</p>
+
 ## Goals
 
 Here are the things you need to know if you want to succeed this assignment:
@@ -49,11 +53,11 @@ philosopher dies.
 Here is the test values:
 
 ```shell
-1 800 200 200 (die)
-5 800 200 200 (no die)
-5 800 200 200 10 (stop after each philo eat 10 times)
-4 410 200 200 (no die)
-4 310 200 200 (die)
+./philo 1 800 200 200 (die)
+./philo 5 800 200 200 (no die)
+./philo 5 800 200 200 10 > result.txt (stop after each philo eat 10 times)
+./philo 4 410 200 200 (no die)
+./philo 4 310 200 200 (die)
 ```
 
 ## External functs
