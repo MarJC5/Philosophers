@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 13:04:34 by jmartin           #+#    #+#             */
-/*   Updated: 2022/04/04 17:13:35 by jmartin          ###   ########.fr       */
+/*   Updated: 2022/04/04 17:41:02 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,6 @@ static void	init_fork(t_status *status)
 	i = -1;
 	while (++i < status->num_of_philo)
 	{
-		if (i + 1 == status->num_of_philo)
-			status->philo[i]->r_fork = status->philo[0];
-		else
-			status->philo[i]->r_fork = status->philo[i + 1];
 		if (i == 0)
 			status->philo[i]->l_fork = status->philo[status->num_of_philo - 1];
 		else
@@ -73,33 +69,7 @@ static void	init_philo(t_status *status)
 	init_fork(status);
 }
 
-void	init_status(t_status *status, char **args)
-{
-	status->num_of_philo = ft_atoi(args[1]);
-	status->time_to_die = ft_atoi(args[2]);
-	status->time_to_eat = ft_atoi(args[3]);
-	status->time_to_sleep = ft_atoi(args[4]);
-	if (status->num_of_philo >= 0 && status->time_to_die >= 0
-		&& status->time_to_eat >= 0 && status->time_to_sleep >= 0)
-	{
-		if (args[5] != NULL)
-		{
-			status->num_of_times_to_eat = ft_atoi(args[5]);
-			if (status->num_of_times_to_eat <= 0)
-				return ;
-		}
-		status->philo = malloc(status->num_of_philo * sizeof(t_philo));
-		if (!status->philo)
-			return ;
-		init_philo(status);
-		init_philo_thread(status);
-		clean_stuff(status);
-	}
-	else
-		printf("Error invalid arguments values");
-}
-
-void	init_philo_thread(t_status *status)
+static void	init_philo_thread(t_status *status)
 {
 	int	i;
 
@@ -126,4 +96,30 @@ void	init_philo_thread(t_status *status)
 			pthread_join(status->thread_id[i], NULL);
 		free(status->thread_id);
 	}
+}
+
+void	init_status(t_status *status, char **args)
+{
+	status->num_of_philo = ft_atoi(args[1]);
+	status->time_to_die = ft_atoi(args[2]);
+	status->time_to_eat = ft_atoi(args[3]);
+	status->time_to_sleep = ft_atoi(args[4]);
+	if (status->num_of_philo >= 0 && status->time_to_die >= 0
+		&& status->time_to_eat >= 0 && status->time_to_sleep >= 0)
+	{
+		if (args[5] != NULL)
+		{
+			status->num_of_times_to_eat = ft_atoi(args[5]);
+			if (status->num_of_times_to_eat <= 0)
+				return ;
+		}
+		status->philo = malloc(status->num_of_philo * sizeof(t_philo));
+		if (!status->philo)
+			return ;
+		init_philo(status);
+		init_philo_thread(status);
+		clean_stuff(status);
+	}
+	else
+		printf("Error invalid arguments values");
 }

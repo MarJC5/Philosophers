@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 15:24:05 by jmartin           #+#    #+#             */
-/*   Updated: 2022/04/04 17:13:42 by jmartin          ###   ########.fr       */
+/*   Updated: 2022/04/04 17:41:08 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ typedef struct s_philo
 	long			last_meal;
 	pthread_mutex_t	fork;
 	struct s_philo	*l_fork;
-	struct s_philo	*r_fork;
 	struct s_status	*status;
 }	t_philo;
 
@@ -76,7 +75,6 @@ void	print_event(t_philo *philo, char *str, int philo_num, long timestamp);
  */
 
 void	init_status(t_status *status, char **args);
-void	init_philo_thread(t_status *status);
 
 /**
  * CLEAN STUFF
