@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 13:04:34 by jmartin           #+#    #+#             */
-/*   Updated: 2022/04/04 19:25:03 by jmartin          ###   ########.fr       */
+/*   Updated: 2022/04/04 23:21:52 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,9 @@ static void	init_philo_thread(t_status *status)
 	int	i;
 
 	i = -1;
-	status->state = 0;
-	status->all_eaten = 0;
-	status->thread_id = (pthread_t *)
-		malloc(status->num_of_philo * sizeof(pthread_t));
+	status->thread_id = malloc(status->num_of_philo * sizeof(pthread_t));
+	if (!status->thread_id)
+		return ;
 	status->time_start = current_timestamp();
 	while (++i < status->num_of_philo)
 	{
@@ -85,6 +84,8 @@ void	init_status(t_status *status, char **args)
 	status->time_to_die = ft_atoi(args[2]);
 	status->time_to_eat = ft_atoi(args[3]);
 	status->time_to_sleep = ft_atoi(args[4]);
+	status->state = 0;
+	status->all_eaten = 0;
 	if (status->num_of_philo >= 0 && status->time_to_die >= 0
 		&& status->time_to_eat >= 0 && status->time_to_sleep >= 0)
 	{
