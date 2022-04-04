@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 15:24:05 by jmartin           #+#    #+#             */
-/*   Updated: 2022/04/04 15:06:03 by jmartin          ###   ########.fr       */
+/*   Updated: 2022/04/04 17:13:42 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_status
 	int				state;
 	int				all_eaten;
 	long			time_start;
-	pthread_mutex_t	print;
+	pthread_mutex_t	check;
 	pthread_t		*thread_id;
 	t_philo			**philo;
 }	t_status;
@@ -75,7 +75,6 @@ void	print_event(t_philo *philo, char *str, int philo_num, long timestamp);
  * INIT
  */
 
-int		is_args_valid(t_status *status);
 void	init_status(t_status *status, char **args);
 void	init_philo_thread(t_status *status);
 
@@ -91,7 +90,6 @@ void	clean_stuff(t_status *status);
 
 int		am_i_full(t_philo *philo);
 int		am_i_starved(t_philo *philo);
-int		routine_fork(t_philo *philo);
 void	routine_eat(t_philo *philo);
 void	routine_sleep(t_philo *philo);
 

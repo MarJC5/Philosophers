@@ -6,13 +6,13 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 12:50:30 by jmartin           #+#    #+#             */
-/*   Updated: 2022/04/04 16:36:38 by jmartin          ###   ########.fr       */
+/*   Updated: 2022/04/04 17:16:52 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-int	routine_fork(t_philo *philo)
+static void	routine_fork(t_philo *philo)
 {
 	if (philo->status->state < 1)
 	{
@@ -26,13 +26,12 @@ int	routine_fork(t_philo *philo)
 				philo->position, now(philo));
 			philo->is_dead += 1;
 			philo->status->state += 1;
-			return (EXIT_FAILURE);
+			pthread_mutex_unlock(&philo->fork);
 		}
 		pthread_mutex_lock(&philo->l_fork->fork);
 		print_event(philo, "has taken a \033[1;37mfork\033[0m",
 			philo->position, now(philo));
 	}
-	return (EXIT_SUCCESS);
 }
 
 void	routine_sleep(t_philo *philo)

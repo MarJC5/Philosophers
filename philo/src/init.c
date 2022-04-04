@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 13:04:34 by jmartin           #+#    #+#             */
-/*   Updated: 2022/04/04 15:40:44 by jmartin          ###   ########.fr       */
+/*   Updated: 2022/04/04 17:13:35 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	init_fork(t_status *status)
 			status->philo[i]->l_fork = status->philo[i - 1];
 		pthread_mutex_init(&status->philo[i]->fork, NULL);
 	}
-	pthread_mutex_init(&status->print, NULL);
+	pthread_mutex_init(&status->check, NULL);
 }
 
 static void	init_philo(t_status *status)
@@ -79,7 +79,8 @@ void	init_status(t_status *status, char **args)
 	status->time_to_die = ft_atoi(args[2]);
 	status->time_to_eat = ft_atoi(args[3]);
 	status->time_to_sleep = ft_atoi(args[4]);
-	if (is_args_valid(status))
+	if (status->num_of_philo >= 0 && status->time_to_die >= 0
+		&& status->time_to_eat >= 0 && status->time_to_sleep >= 0)
 	{
 		if (args[5] != NULL)
 		{
