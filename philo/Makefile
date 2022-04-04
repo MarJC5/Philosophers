@@ -13,7 +13,7 @@ SRCS		:= ${patsubst %, ${SRCS_DIR}%, ${SRCS_FILES}}
 
 O_DIR		= ./objs/
 D_DIR		= ./debugs/
-HEADS		= 
+HEADS		= -pthread
 
 OBJS_FILES	:= ${SRCS_FILES:.c=.o}
 OBJS		:= ${patsubst %, ${O_DIR}%, ${OBJS_FILES}}
