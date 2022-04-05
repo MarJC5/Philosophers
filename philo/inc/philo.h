@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 15:24:05 by jmartin           #+#    #+#             */
-/*   Updated: 2022/04/04 23:21:49 by jmartin          ###   ########.fr       */
+/*   Updated: 2022/04/05 14:19:01 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_status
 	int				all_eaten;
 	long			time_start;
 	pthread_mutex_t	check;
+	pthread_mutex_t	print;
 	pthread_t		*thread_id;
 	t_philo			**philo;
 }	t_status;

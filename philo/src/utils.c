@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 10:55:45 by jmartin           #+#    #+#             */
-/*   Updated: 2022/04/05 13:46:31 by jmartin          ###   ########.fr       */
+/*   Updated: 2022/04/05 14:19:52 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,10 @@ void	oh_aspetta_calmati(t_philo *philo, int time_ref)
 
 void	print_event(t_philo *philo, char *str, int philo_num, long timestamp)
 {
+	pthread_mutex_lock(&philo->status->print);
 	if (philo->status->state < 1)
 		printf("%10ld ms \033[1;37m%3d\033[0m %s\n", timestamp, philo_num, str);
+	pthread_mutex_unlock(&philo->status->print);
 }
 
 void	clean_stuff(t_status *status)
