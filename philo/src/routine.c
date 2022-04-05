@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 12:50:30 by jmartin           #+#    #+#             */
-/*   Updated: 2022/04/05 08:29:50 by jmartin          ###   ########.fr       */
+/*   Updated: 2022/04/05 13:38:33 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,10 @@ void	mangia_bene(t_philo *philo)
 		oh_aspetta_calmati(philo, philo->status->time_to_eat);
 		philo->eat_count += 1;
 		if (philo->eat_count == philo->status->num_of_times_to_eat)
+		{
 			philo->status->all_eaten += 1;
+			philo->status->state += 1;
+		}
 	}
 	pthread_mutex_unlock(&philo->fork);
 	pthread_mutex_unlock(&philo->l_fork->fork);
