@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 10:55:45 by jmartin           #+#    #+#             */
-/*   Updated: 2022/04/05 13:38:01 by jmartin          ###   ########.fr       */
+/*   Updated: 2022/04/05 13:46:31 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	oh_aspetta_calmati(t_philo *philo, int time_ref)
 			break ;
 		usleep(100);
 	}
+	am_i_starved(philo);
 }
 
 void	print_event(t_philo *philo, char *str, int philo_num, long timestamp)

@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 14:38:53 by jmartin           #+#    #+#             */
-/*   Updated: 2022/04/04 17:13:48 by jmartin          ###   ########.fr       */
+/*   Updated: 2022/04/05 13:46:22 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	am_i_starved(t_philo *philo)
 {
+	pthread_mutex_lock(&philo->status->check);
 	if (now(philo) - philo->last_meal >= philo->status->time_to_die)
 	{
-		pthread_mutex_lock(&philo->status->check);
 		print_event(philo, "is \033[1;31mdied\033[0m",
 			philo->position, now(philo));
 		philo->is_dead += 1;
@@ -24,6 +24,7 @@ int	am_i_starved(t_philo *philo)
 		pthread_mutex_unlock(&philo->status->check);
 		return (EXIT_FAILURE);
 	}
+	pthread_mutex_unlock(&philo->status->check);
 	return (EXIT_SUCCESS);
 }
 

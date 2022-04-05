@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 12:50:30 by jmartin           #+#    #+#             */
-/*   Updated: 2022/04/05 13:38:33 by jmartin          ###   ########.fr       */
+/*   Updated: 2022/04/05 14:12:38 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	le_forchette_sono_disponibili(t_philo *philo)
 {
 	if (philo->status->state < 1)
 	{
+		am_i_starved(philo);
 		pthread_mutex_lock(&philo->fork);
 		print_event(philo, "has taken a \033[1;37mfork\033[0m",
 			philo->position, now(philo));
@@ -28,9 +29,11 @@ static void	le_forchette_sono_disponibili(t_philo *philo)
 			philo->status->state += 1;
 			pthread_mutex_unlock(&philo->fork);
 		}
+		am_i_starved(philo);
 		pthread_mutex_lock(&philo->l_fork->fork);
 		print_event(philo, "has taken a \033[1;37mfork\033[0m",
 			philo->position, now(philo));
+		am_i_starved(philo);
 	}
 }
 
@@ -39,6 +42,7 @@ void	mangia_bene(t_philo *philo)
 	le_forchette_sono_disponibili(philo);
 	if (philo->status->state < 1)
 	{
+		am_i_starved(philo);
 		philo->last_meal = now(philo);
 		print_event(philo, "is \033[1;32meating\033[0m",
 			philo->position, philo->last_meal);
