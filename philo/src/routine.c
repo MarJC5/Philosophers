@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 12:50:30 by jmartin           #+#    #+#             */
-/*   Updated: 2022/04/04 19:25:09 by jmartin          ###   ########.fr       */
+/*   Updated: 2022/04/05 08:29:50 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	mangia_bene(t_philo *philo)
 	if (philo->status->state < 1)
 	{
 		philo->last_meal = now(philo);
-		print_event(philo, "is \033[1;32meating\033[0m", philo->position,
-			philo->last_meal);
+		print_event(philo, "is \033[1;32meating\033[0m",
+			philo->position, philo->last_meal);
 		oh_aspetta_calmati(philo, philo->status->time_to_eat);
 		philo->eat_count += 1;
 		if (philo->eat_count == philo->status->num_of_times_to_eat)
