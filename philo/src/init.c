@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 13:04:34 by jmartin           #+#    #+#             */
-/*   Updated: 2022/04/04 23:21:52 by jmartin          ###   ########.fr       */
+/*   Updated: 2022/04/05 08:56:32 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	init_status(t_status *status, char **args)
 	status->time_to_sleep = ft_atoi(args[4]);
 	status->state = 0;
 	status->all_eaten = 0;
-	if (status->num_of_philo >= 0 && status->time_to_die >= 0
+	if (status->num_of_philo > 0 && status->time_to_die >= 0
 		&& status->time_to_eat >= 0 && status->time_to_sleep >= 0)
 	{
 		if (args[5] != NULL)
